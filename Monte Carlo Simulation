@@ -1,0 +1,24 @@
+import matplotlib.pyplot as plt
+
+# Parameters
+np.random.seed(42)
+initial_investment = 10000
+num_simulations = 1000
+num_years = 10
+annual_return_mean = 0.05
+annual_return_std = 0.1
+
+# Simulate portfolio values
+simulated_portfolios = []
+for _ in range(num_simulations):
+ annual_returns = np.random.normal(annual_return_mean, annual_return_std, num_years)
+ portfolio_value = initial_investment * np.prod(1 + annual_returns)
+ simulated_portfolios.append(portfolio_value)
+
+# Plotting the results
+plt.hist(simulated_portfolios, bins=30, alpha=0.75)
+plt.title('Monte Carlo Simulation of Portfolio Value')
+plt.xlabel('Final Portfolio Value')
+plt.ylabel('Frequency')
+plt.grid()
+plt.show()
